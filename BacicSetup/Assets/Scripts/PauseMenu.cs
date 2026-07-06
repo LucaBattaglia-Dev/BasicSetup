@@ -79,7 +79,9 @@ public class PauseMenu : MonoBehaviour
 
         Time.timeScale = 1f;
         isPaused = false;
-        SceneManager.LoadScene(1);
+        
+        // Loads the scene by name instead of build index
+        SceneManager.LoadScene("TitleScreen");
     }
 
     // Helper method that manually darkens the specific button that was clicked
