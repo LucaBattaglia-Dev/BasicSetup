@@ -8,11 +8,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;   // The main pause menu panel
     public GameObject optionsMenuUI;  // The options panel containing your sliders
 
-    [Header("Click Settings")]
-    [Tooltip("How much darker the button gets when clicked. (0 = pitch black, 1 = normal color)")]
-    [Range(0f, 1f)]
-    public float darkMultiplier = 0.6f;
-
     private static bool isPaused = false;
 
     void Update()
@@ -39,12 +34,6 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    public void Resume(Button clickedButton)
-    {
-        DarkenButtonColor(clickedButton);
-        Resume();
-    }
-
     void Pause()
     {
         pauseMenuUI.SetActive(true);
@@ -53,9 +42,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
-    public void OpenOptions(Button clickedButton)
+    public void OpenOptions()
     {
-        DarkenButtonColor(clickedButton);
 
         // Prints the requested message to the Unity Console
         Debug.Log("option panel open");
@@ -64,41 +52,20 @@ public class PauseMenu : MonoBehaviour
         optionsMenuUI.SetActive(true);  // Show options panel
     }
 
-    public void CloseOptions(Button clickedButton)
+    public void CloseOptions()
     {
-        DarkenButtonColor(clickedButton);
 
         optionsMenuUI.SetActive(false); // Hide options panel
         pauseMenuUI.SetActive(true);   // Bring back main pause menu
     }
 
     // Call this when clicking the "Quit" button
-    public void QuitToMenu(Button clickedButton)
+    public void QuitToMenu()
     {
-        DarkenButtonColor(clickedButton);
-
         Time.timeScale = 1f;
         isPaused = false;
         
         // Loads the scene by name instead of build index
         SceneManager.LoadScene("TitleScreen");
-    }
-
-    // Helper method that manually darkens the specific button that was clicked
-    private void DarkenButtonColor(Button button)
-    {
-        if (button != null)
-        {
-            Image buttonImage = button.GetComponent<Image>();
-            if (buttonImage != null)
-            {
-                Color darkerColor = buttonImage.color;
-                darkerColor.r *= darkMultiplier;
-                darkerColor.g *= darkMultiplier;
-                darkerColor.b *= darkMultiplier;
-                
-                buttonImage.color = darkerColor;
-            }
-        }
     }
 }
