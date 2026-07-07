@@ -103,7 +103,7 @@ public class PauseMenu : MonoBehaviour
         {
             // Invert value: high slider value = low image alpha (bright screen)
             Color color = brightnessOverlay.color;
-            color.a = 1f - value; 
+            color.a = 1f - (value * 0.6f + 0.4f);
             brightnessOverlay.color = color;
         }
     }
