@@ -1157,6 +1157,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1350057137}
     m_Modifications:
+    - target: {fileID: 785250527981099942, guid: 57cd5cf0785728148b68c55d8af52c14, type: 3}
+      propertyPath: gameplaySceneName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8464465069522064487, guid: 57cd5cf0785728148b68c55d8af52c14, type: 3}
       propertyPath: m_Name
       value: ScriptObject
